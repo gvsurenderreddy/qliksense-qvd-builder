@@ -1,0 +1,83 @@
+//--------------------[ -- ]--------------------//
+	set vLoaderXls = 'lib://QVSs\_loader.xlsx';
+
+	//----- check to see if xls file exists
+	if FileTime('$(vLoaderXls)') then
+	  
+		//----- load in the xls file
+		scripts:
+		
+		LOAD 
+		
+			_scriptname, 
+			_qvdname, 
+			_active,
+			_incremental
+		
+		FROM
+		[$(vLoaderXls)]
+		(ooxml, embedded labels, table is Sheet1);
+		
+		//----- now lets loop over xls rows :)
+		for i = 1 to NoOfRows('scripts')
+		
+			//----- grab cell values for current row
+			let vScriptName			= Peek('_scriptname', i-1, 'scripts');
+			let vQvdName			= Peek('_qvdname', i-1, 'scripts');
+			let vScriptActive		= Peek('_active', i-1, 'scripts');
+			let vIncremental		= Peek('_incremental', i-1, 'scripts');
+			
+			set vQvdFileName		= 'lib://QVDs/$(vQvdName).qvd';
+			set vQvsFileName		= 'lib://QVSs/$(vScriptName).qvs';
+			
+			//----- check to see if current row is active
+			if vScriptActive = 1 then 
+			
+				//----- does the qvd exist, save output into variable to be used by incremental load scripts
+				let vFileExists		= if(QvdCreateTime('$(vQvdFileName)') > 0, 1, 0);
+				
+				//----- lets see if the current qvd script exists while we're at it
+				if FileTime('$(vQvsFileName)') then
+				
+					trace ;
+					trace ----------[ running qvs script ]----------;
+					trace ----------[ $(vQvsFileName) ]----------;	
+					
+					$(Include=[$(vQvsFileName)]);
+					
+					if NoOfRows('data') > 0 then
+					
+						//----- store data into qvd
+						store data into '$(vQvdFileName)' (qvd);
+						
+						//----- drop the data table as its no longer required
+						drop table data;
+						
+					else
+					
+						trace ;
+						trace ??????????[ no data table found ]??????????;
+
+					endif
+				
+				else
+				
+					trace ;
+					trace ##########[ script not found ]##########;
+					trace ##########[ $(vQvsFileName) ]##########;
+				
+				endif
+			
+			endif
+		
+		next
+
+	else
+	
+		trace ;
+		trace ##########[ xls file not found ]##########;
+		trace ##########[ $(vLoaderXls) ]##########;
+	
+	endif
+
+//--------------------[ -- ]--------------------//
