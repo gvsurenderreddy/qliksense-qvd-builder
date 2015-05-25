@@ -1,0 +1,49 @@
+data:
+
+LIB CONNECT TO 'DB_NORTHWND';
+
+LOAD 
+
+  1 as _totalRec,
+  EmployeeID,
+  EmployeeID as %_EmployeeID,
+  LastName,
+  FirstName,
+  Title,
+  TitleOfCourtesy,
+  BirthDate,
+  HireDate,
+  Address,
+  City,
+  Region,
+  PostalCode,
+  Country,
+  HomePhone,
+  Extension,
+  Photo,
+  Notes,
+  ReportsTo,
+  PhotoPath;
+    
+SQL SELECT 
+
+  EmployeeID,
+  LastName,
+  FirstName,
+  Title,
+  TitleOfCourtesy,
+  BirthDate,
+  HireDate,
+  Address,
+  City,
+  Region,
+  PostalCode,
+  Country,
+  HomePhone,
+  Extension,
+  Photo,
+  Notes,
+  ReportsTo,
+  PhotoPath
+    
+FROM NORTHWND.dbo.Employees;

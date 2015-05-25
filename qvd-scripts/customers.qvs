@@ -1,0 +1,35 @@
+data:
+
+LIB CONNECT TO 'DB_NORTHWND';
+
+LOAD 
+
+  1 as _totalRec,
+  CustomerID,
+  CustomerID as %_CustomerID,
+  CompanyName,
+  ContactName,
+  ContactTitle,
+  Address,
+  City,
+  Region,
+  PostalCode,
+  Country,
+  Phone,
+  Fax;
+
+SQL SELECT 
+
+  CustomerID,
+  CompanyName,
+  ContactName,
+  ContactTitle,
+  Address,
+  City,
+  Region,
+  PostalCode,
+  Country,
+  Phone,
+  Fax
+
+FROM NORTHWND.dbo.Customers;

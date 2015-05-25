@@ -1,0 +1,15 @@
+map_region:
+
+LIB CONNECT TO 'DB_NORTHWND';
+
+MAPPING LOAD 
+
+  RegionID,
+  RegionDescription;
+
+SQL SELECT 
+
+  RegionID,
+  RegionDescription
+
+FROM NORTHWND.dbo.region;

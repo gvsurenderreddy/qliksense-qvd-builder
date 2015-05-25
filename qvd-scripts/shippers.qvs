@@ -1,0 +1,18 @@
+data:
+
+LIB CONNECT TO 'DB_NORTHWND';
+
+LOAD 
+
+  ShipperID,
+  ShipperID as %_ShipperID,
+  CompanyName,
+  Phone;
+
+SQL SELECT 
+
+  ShipperID,
+  CompanyName,
+  Phone
+
+FROM NORTHWND.dbo.shippers;

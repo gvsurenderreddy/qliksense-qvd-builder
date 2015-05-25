@@ -1,0 +1,37 @@
+data:
+
+LIB CONNECT TO 'DB_NORTHWND';
+
+LOAD 
+
+  1 as _totalRec,
+  SupplierID,
+  SupplierID as %_SupplierID,
+  CompanyName,
+  ContactName,
+  ContactTitle,
+  Address,
+  City,
+  Region,
+  PostalCode,
+  Country,
+  Phone,
+  Fax,
+  HomePage;
+    
+SQL SELECT 
+
+  SupplierID,
+  CompanyName,
+  ContactName,
+  ContactTitle,
+  Address,
+  City,
+  Region,
+  PostalCode,
+  Country,
+  Phone,
+  Fax,
+  HomePage
+ 
+FROM NORTHWND.dbo.Suppliers;

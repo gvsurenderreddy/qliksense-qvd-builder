@@ -1,0 +1,35 @@
+data:
+
+LIB CONNECT TO 'DB_NORTHWND';
+
+LOAD 
+
+  1 as _totalRec,
+  ProductID,
+  ProductID as %_ProductID,
+  ProductName,
+  SupplierID,
+  SupplierID as %_SupplierID,
+  CategoryID,
+  CategoryID as %_CategoryID,
+  QuantityPerUnit,
+  UnitPrice,
+  UnitsInStock,
+  UnitsOnOrder,
+  ReorderLevel,
+  Discontinued;
+
+SQL SELECT 
+
+  ProductID,
+  ProductName,
+  SupplierID,
+  CategoryID,
+  QuantityPerUnit,
+  UnitPrice,
+  UnitsInStock,
+  UnitsOnOrder,
+  ReorderLevel,
+  Discontinued
+
+FROM NORTHWND.dbo.products;

@@ -1,0 +1,21 @@
+data:
+
+LIB CONNECT TO 'DB_NORTHWND';
+
+LOAD 
+
+  1 as _totalRec,
+  CategoryID,
+  CategoryID as %_CategoryID,
+  CategoryName,
+  Description,
+  Picture;
+    
+SQL SELECT 
+
+  CategoryID,
+  CategoryName,
+  Description,
+  Picture
+
+FROM NORTHWND.dbo.categories;

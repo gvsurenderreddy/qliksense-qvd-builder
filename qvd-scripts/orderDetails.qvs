@@ -1,0 +1,22 @@
+data:
+
+LIB CONNECT TO 'DB_NORTHWND';
+
+LOAD 
+
+  OrderID,
+  OrderID as %_OrderID,
+  ProductID as %_ProductID,
+  UnitPrice,
+  Quantity,
+  Discount;
+
+SQL SELECT 
+
+  OrderID,
+  ProductID,
+  UnitPrice,
+  Quantity,
+  Discount
+
+FROM NORTHWND.dbo."Order Details";

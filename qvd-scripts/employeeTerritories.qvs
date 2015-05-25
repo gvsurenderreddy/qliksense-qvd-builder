@@ -1,0 +1,39 @@
+data:
+
+LIB CONNECT TO 'DB_NORTHWND';
+
+LOAD 
+
+  EmployeeID,
+  EmployeeID as %_EmployeeID,
+  TerritoryID;
+
+SQL SELECT 
+
+  EmployeeID,
+  TerritoryID
+
+FROM NORTHWND.dbo.EmployeeTerritories;
+
+LIB CONNECT TO 'DB_NORTHWND';
+
+LEFT JOIN (data)
+LOAD 
+
+  *,
+  ApplyMap('map_region', RegionID, '* not known *') as Region
+  ;
+
+LOAD 
+
+  TerritoryID,
+  TerritoryDescription,
+  RegionID;
+
+SQL SELECT 
+
+  TerritoryID,
+  TerritoryDescription,
+  RegionID
+
+FROM NORTHWND.dbo.Territories;

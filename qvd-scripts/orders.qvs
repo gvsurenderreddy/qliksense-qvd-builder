@@ -1,0 +1,44 @@
+data:
+
+LIB CONNECT TO 'DB_NORTHWND';
+
+LOAD 
+
+  1 as _totalRec,
+  OrderID,
+  OrderID as %_OrderID,
+  CustomerID,
+  CustomerID as %_CustomerID,  
+  EmployeeID,
+  EmployeeID as %_EmployeeID,
+  OrderDate,
+  RequiredDate,
+  ShippedDate,
+  ShipVia,
+  ShipVia as %_ShipperID,
+  Freight,
+  ShipName,
+  ShipAddress,
+  ShipCity,
+  ShipRegion,
+  ShipPostalCode,
+  ShipCountry;
+  
+SQL SELECT 
+
+  OrderID,
+  CustomerID,
+  EmployeeID,
+  OrderDate,
+  RequiredDate,
+  ShippedDate,
+  ShipVia,
+  Freight,
+  ShipName,
+  ShipAddress,
+  ShipCity,
+  ShipRegion,
+  ShipPostalCode,
+  ShipCountry
+
+FROM NORTHWND.dbo.orders;
