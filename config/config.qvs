@@ -1,0 +1,15 @@
+//+++++++++[ use with qlikview, not required for sense ]+++++++++//
+
+
+//--------------------[ setup db connection ]--------------------//
+
+	set _connection			= 'ohana-sqlexpress';
+
+//--------------------[ environment variables ]--------------------//
+
+	set _serverMode		= 'development'; //--- development | test | production --- 
+	set _projPath		= 'C:\Users\dave\Documents\Qlik\Sense\Apps\Northwind';
+	set _qvdPath		= 'C:\Users\dave\Documents\Qlik\Sense\Apps\Northwind\qvds';
+	set _qvsPath		= 'C:\Users\dave\Documents\Qlik\Sense\Apps\Northwind\qvd_scripts';
+	
+//--------------------[ -- ]--------------------//
